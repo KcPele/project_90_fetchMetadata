@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from authy.forms import SignupForm, ChangePasswordForm, EditProfileForm
-from django.contrib.auth.models import User
+
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
@@ -8,7 +8,8 @@ from django.contrib.auth import update_session_auth_hash
 from authy.models import Profile
 from django.template import loader
 from django.http import HttpResponse
-
+from django.contrib.auth import get_user_model
+User = get_user_model()
 # Create your views here.
 # A// will be changed to class based view 
 def UserProfile(request, username):

@@ -29,7 +29,7 @@
       {% endif %}
       <button type="submit" value="login" >Login</button>
       <input type="hidden" name="next" value="{{ next }}">
-      <button >Create an account</button>
+      <button > <a href="{% url 'signup' %}">Create an account</a>  </button>
     </form>
   </div>
 
