@@ -12,8 +12,8 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 # Create your views here.
 # A// will be changed to class based view 
-def UserProfile(request, username):
-	user = get_object_or_404(User, username=username)
+def UserProfile(request):
+	user = get_object_or_404(User, username=request.user.username)
 	profile = Profile.objects.get(user=user)
 
 
@@ -46,28 +46,28 @@ def Signup(request):
 	return render(request, 'signup.html', context)
 
 
-@login_required
-def PasswordChange(request):
-	user = request.user
-	if request.method == 'POST':
-		form = ChangePasswordForm(request.POST)
-		if form.is_valid():
-			new_password = form.cleaned_data.get('new_password')
-			user.set_password(new_password)
-			user.save()
-			update_session_auth_hash(request, user)
-			return redirect('change_password_done')
-	else:
-		form = ChangePasswordForm(instance=user)
+# @login_required
+# def PasswordChange(request):
+# 	user = request.user
+# 	if request.method == 'POST':
+# 		form = ChangePasswordForm(request.POST)
+# 		if form.is_valid():
+# 			new_password = form.cleaned_data.get('new_password')
+# 			user.set_password(new_password)
+# 			user.save()
+# 			update_session_auth_hash(request, user)
+# 			return redirect('change_password_done')
+# 	else:
+# 		form = ChangePasswordForm(instance=user)
 
-	context = {
-		'form':form,
-	}
+# 	context = {
+# 		'form':form,
+# 	}
 
-	return render(request, 'change_password.html', context)
+# 	return render(request, 'change_password.html', context)
 
-def PasswordChangeDone(request):
-	return render(request, 'change_password_done.html')
+# def PasswordChangeDone(request):
+# 	return render(request, 'change_password_done.html')
 
 
 @login_required
