@@ -19,12 +19,12 @@
     <a  href="{% url 'profile'%}">Profile</a>
     <a href="{% url 'logout'%}">Log Out</a>
     {% else %}
-    <a href="{% url 'login' %}">Log
-    In</a>
+    <a href="{% url 'django_registration_register' %}">Register</a>
+    <a href="{% url 'login' %}">Log In</a>
     {% endif %}
     </div>
     </div>
-    </nav
+  </nav>
 
   {% block content %}
   {% endblock %}
@@ -32,8 +32,7 @@
 
   
 
-{% comment %} 
-  <script src="{% static 'js' %}"></script> {% endcomment %}
+  <script src="{% static 'js/test.js' %}"></script> 
 
   </body>
 </html>
