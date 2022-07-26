@@ -5,13 +5,26 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Fetch Meta Data</title>
+  <title>{% block title %}Welcome to {% endblock %}</title>
   <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 
 </head>
 <body>
-
+  <nav >
+    <div >
+    <a  href="/">Home</a>
+    <div >
+    {% if request.user.is_active %}
+    <a  href="{% url 'profile'%}">Profile</a>
+    <a href="{% url 'logout'%}">Log Out</a>
+    {% else %}
+    <a href="{% url 'django_registration_register' %}">Register</a>
+    <a href="{% url 'login' %}">Log In</a>
+    {% endif %}
+    </div>
+    </div>
+  </nav>
 
   {% block content %}
   {% endblock %}
@@ -19,8 +32,7 @@
 
   
 
-{% comment %} 
-  <script src="{% static 'js' %}"></script> {% endcomment %}
+  <script src="{% static 'js/test.js' %}"></script> 
 
   </body>
 </html>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from authy.forms import SignupForm, ChangePasswordForm, EditProfileForm
+from authy.forms import EditProfileForm, ChangePasswordForm
 
 
 from django.contrib.auth.decorators import login_required
@@ -12,8 +12,8 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 # Create your views here.
 # A// will be changed to class based view 
-def UserProfile(request, username):
-	user = get_object_or_404(User, username=username)
+def UserProfile(request):
+	user = get_object_or_404(User, username=request.user.username)
 	profile = Profile.objects.get(user=user)
 
 
@@ -25,25 +25,6 @@ def UserProfile(request, username):
 	}
 
 	return HttpResponse(template.render(context, request))
-
-
-def Signup(request):
-	if request.method == 'POST':
-		form = SignupForm(request.POST)
-		if form.is_valid():
-			username = form.cleaned_data.get('username')
-			email = form.cleaned_data.get('email')
-			password = form.cleaned_data.get('password')
-			User.objects.create_user(username=username, email=email, password=password)
-			return redirect('index')
-	else:
-		form = SignupForm()
-	
-	context = {
-		'form':form,
-	}
-
-	return render(request, 'signup.html', context)
 
 
 @login_required

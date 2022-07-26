@@ -7,7 +7,7 @@ from django.db.models.signals import post_save
 # Create your models here.
 
 class User(AbstractUser):
-    pass
+    email = models.EmailField(max_length=254, unique=True)
 
 # do not touch
 

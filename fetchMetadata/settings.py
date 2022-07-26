@@ -46,6 +46,7 @@ class Dev(Configuration):
     ]
 
     AUTH_USER_MODEL = "authy.User"
+    ACCOUNT_ACTIVATION_DAYS = 7
 
     MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
@@ -134,8 +135,11 @@ class Dev(Configuration):
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    
+    
 
-
+    LOGOUT_REDIRECT_URL = 'index'
+    
     # Default primary key field type
     # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
