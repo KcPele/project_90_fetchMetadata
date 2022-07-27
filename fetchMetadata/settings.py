@@ -27,9 +27,9 @@ class Dev(Configuration):
     SECRET_KEY = 'django-insecure-j(8)@r_)%z^axflen4v%!dj_#_bjo$^d$hg^^elj=^th9#mtzy'
 
     # SECURITY WARNING: don't run with debug turned on in production!
-    DEBUG = True
+    DEBUG = False
 
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['*']
 
 
     # Application definition
@@ -63,7 +63,7 @@ class Dev(Configuration):
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [os.path.join(BASE_DIR, 'templates')],
+            'DIRS': [BASE_DIR / 'templates/'],
             'APP_DIRS': True,
             'OPTIONS': {
                 'context_processors': [
@@ -136,7 +136,7 @@ class Dev(Configuration):
 
     ### SMTP configuration; simple mail transfer protocol
     
-    # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     # EMAIL_HOST =    'smtp.gmail.com'
     # EMAIL_PORT= 587
     # EMAIL_USE_TLS= True
