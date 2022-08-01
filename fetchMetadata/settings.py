@@ -59,6 +59,7 @@ class Dev(Configuration):
     ACCOUNT_EMAIL_REQUIRED = True
     ACCOUNT_USERNAME_REQUIRED = True
     ACCOUNT_AUTHENTICATION_METHOD = "email"
+    SOCIALACCOUNT_QUERY_EMAIL = True
 
     MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
