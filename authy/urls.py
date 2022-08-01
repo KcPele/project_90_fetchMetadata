@@ -5,7 +5,7 @@ from django.urls import path, include
 from authy.views import UserProfile, EditProfile
 from django_registration.backends.activation.views import RegistrationView
 from .forms import AuthyRegistrationForm
-
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [

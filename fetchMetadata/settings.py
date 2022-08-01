@@ -36,7 +36,6 @@ class Dev(Configuration):
 
     INSTALLED_APPS = [
         'django.contrib.admin',
-        
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
@@ -55,8 +54,11 @@ class Dev(Configuration):
     ACCOUNT_ACTIVATION_DAYS = 7
     SITE_ID = 1
     SOCIALACCOUNT_LOGIN_ON_GET=True
-    ACCOUNT_UNIQUE_EMAIL = True
+    ACCOUNT_LOGOUT_ON_GET= True
+    
     ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_USERNAME_REQUIRED = True
+    ACCOUNT_AUTHENTICATION_METHOD = "email"
 
     MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
