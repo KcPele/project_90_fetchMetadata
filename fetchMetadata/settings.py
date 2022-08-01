@@ -36,17 +36,27 @@ class Dev(Configuration):
 
     INSTALLED_APPS = [
         'django.contrib.admin',
+        
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
+        'django.contrib.sites',
         'authy',
         'app_data',
+        'allauth', 
+        'allauth.account', 
+        'allauth.socialaccount',
+        'allauth.socialaccount.providers.google',
     ]
 
     AUTH_USER_MODEL = "authy.User"
     ACCOUNT_ACTIVATION_DAYS = 7
+    SITE_ID = 1
+    SOCIALACCOUNT_LOGIN_ON_GET=True
+    ACCOUNT_UNIQUE_EMAIL = True
+    ACCOUNT_EMAIL_REQUIRED = True
 
     MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
@@ -146,7 +156,7 @@ class Dev(Configuration):
     
     
 
-    LOGOUT_REDIRECT_URL = 'index'
+    LOGOUT_REDIRECT_URL = '/'
     
     # Default primary key field type
     # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
