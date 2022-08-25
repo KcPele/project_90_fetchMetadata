@@ -36,3 +36,4 @@ class ContactSuccess(TemplateView):
 
     template_name = "contactsuccess.html"
 
+

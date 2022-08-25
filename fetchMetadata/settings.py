@@ -29,7 +29,7 @@ class Dev(Configuration):
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
 
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['*']
 
 
     # Application definition
@@ -41,12 +41,25 @@ class Dev(Configuration):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
+        'django.contrib.sites',
         'authy',
         'app_data',
+        'allauth', 
+        'allauth.account', 
+        'allauth.socialaccount',
+        'allauth.socialaccount.providers.google',
     ]
 
     AUTH_USER_MODEL = "authy.User"
     ACCOUNT_ACTIVATION_DAYS = 7
+    SITE_ID = 1
+    SOCIALACCOUNT_LOGIN_ON_GET=True
+    ACCOUNT_LOGOUT_ON_GET= True
+    
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_USERNAME_REQUIRED = True
+    ACCOUNT_AUTHENTICATION_METHOD = "email"
+    SOCIALACCOUNT_QUERY_EMAIL = True
 
     MIDDLEWARE = [
         'django.middleware.security.SecurityMiddleware',
@@ -63,7 +76,7 @@ class Dev(Configuration):
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [os.path.join(BASE_DIR, 'templates')],
+            'DIRS': [BASE_DIR / 'templates/'],
             'APP_DIRS': True,
             'OPTIONS': {
                 'context_processors': [
@@ -136,7 +149,7 @@ class Dev(Configuration):
 
     ### SMTP configuration; simple mail transfer protocol
     
-    # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     # EMAIL_HOST =    'smtp.gmail.com'
     # EMAIL_PORT= 587
     # EMAIL_USE_TLS= True
@@ -146,7 +159,7 @@ class Dev(Configuration):
     
     
 
-    LOGOUT_REDIRECT_URL = 'index'
+    LOGOUT_REDIRECT_URL = '/'
     
     # Default primary key field type
     # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
