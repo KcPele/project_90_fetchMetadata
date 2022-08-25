@@ -43,6 +43,8 @@ class Dev(Configuration):
         'django.contrib.staticfiles',
         'authy',
         'app_data',
+
+        'django_extensions'
     ]
 
     AUTH_USER_MODEL = "authy.User"
@@ -135,13 +137,13 @@ class Dev(Configuration):
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
     ### SMTP configuration; simple mail transfer protocol
-    
-    # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     # EMAIL_HOST =    'smtp.gmail.com'
     # EMAIL_PORT= 587
     # EMAIL_USE_TLS= True
-    # EMAIL_HOST_USER= ''
-    # EMAIL_HOST_PASSWORD= ''
+    # EMAIL_HOST_USER= 'nwachukwugregory99@gmail.com'
+    # EMAIL_HOST_PASSWORD= 'Nwachukwugregg'
      
     
     
@@ -160,3 +162,5 @@ class Prod(Dev):
     SECRET_KEY = values.SecretValue()
     ALLOWED_HOSTS = values.ListValue(["localhost", "0.0.0.0"])
     # DATABASES = values.DatabaseURLValue(f"sqlite:///{BASE_DIR}/db.sqlite3")
+
+    
